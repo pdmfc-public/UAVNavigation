@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+        <node name="bebop_planning_node" type="bebop_planning_node" pkg="bebop_planning" output="screen" required="true" >
+                <param name="ip" value="192.168.42.1" type="string"/>
+                <param name="user" value="anonymous" type="string"/>
+                <param name="pass" value="" type="string"/>
+                <param name="port" value="21" type="int"/>
+        </node>
+
+</launch>

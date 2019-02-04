@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="fcu" default="udp://@localhost" /> 
+	<node pkg="mavros" name="mavros_node" type="mavros_node" output="screen">
+	    <param name="fcu_url" value="$(arg fcu)" />
+	</node>
+</launch>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+        <node name="bebop_commander_node" type="bebop_commander_node" pkg="bebop_commander" output="screen" required="true" >
+                <param name="group_name" value="Bebop_base"/>
+        </node>
+
+</launch>

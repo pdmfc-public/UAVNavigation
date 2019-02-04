@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="show_plot_pid" default="false" />
+  <arg name="show_rqt_reconfigure" default="false" />
+
+  <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+  <include file="$(find bebop_moveit)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="false"/>
+  </include>
+
+  <include file="$(find bebop_controller)/launch/bebop_controller.launch" />
+
+  <!-- We do not have a robot connected, so publish fake joint states -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- Given the published joint states, publish tf for the robot links -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <include file="$(find pid)/launch/servo_sim.launch">
+    <arg name="pid_name" value="x" />
+    <arg name="kp" value="0.1" />
+    <arg name="ki" value="0.0" />
+    <arg name="kd" value="0.2" />
+    <arg name="show_plot" value="$(arg show_plot_pid)" />
+  </include>
+
+  <include file="$(find pid)/launch/servo_sim.launch">
+    <arg name="pid_name" value="y" />
+    <arg name="kp" value="0.1" />
+    <arg name="ki" value="0.0" />
+    <arg name="kd" value="0.2" />
+    <arg name="show_plot" value="$(arg show_plot_pid)" />
+  </include>
+
+  <include file="$(find pid)/launch/servo_sim.launch">
+    <arg name="pid_name" value="z" />
+    <arg name="kp" value="3.0" />
+    <arg name="ki" value="0.167" /> <!--1.0-->
+    <arg name="kd" value="0.015" /> <!-- 0.1-->
+    <arg name="show_plot" value="$(arg show_plot_pid)" />
+  </include>
+
+  <include file="$(find bebop_waypoint)/launch/bebop_waypoint.launch" /> 
+
+  <!-- Update reconfigurable variables -->
+  <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" if="$(arg show_rqt_reconfigure)"/>  
+
+  <!-- Visualisation RVIZ -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find bebop_moveit)/rviz/moveit.rviz" output="screen"/>
+
+  <include file="$(find bebop_commander)/launch/bebop_commander.launch" /> 
+
+</launch>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <name>bebop_moveit</name>
+  <version>0.7.0</version>
+  <description>MoveIt!</description>
+
+  <maintainer email="joao.m.carvalho@pdmfc.com">João Pedro Carvalho</maintainer>
+
+  <license>BSD</license>
+
+  <author email="joao.m.carvalho@pdmfc.com">João Pedro Carvalho</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>

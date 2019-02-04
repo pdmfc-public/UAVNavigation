@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node name="bebop_controller_node" type="bebop_controller_node" pkg="bebop_controller" output="screen" required="true" >
+        <param name="distanceThreshold" value="70" />
+        <param name="distanceX" value="1" />
+        <param name="distanceY" value="1" />
+        <param name="distanceZ" value="1" />
+    </node>
+</launch>

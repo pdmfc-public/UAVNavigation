@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+        <node name="bebop_waypoint_node" type="bebop_waypoint_node" pkg="bebop_waypoint" output="screen" required="true" >
+        </node>
+
+</launch>
